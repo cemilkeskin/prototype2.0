@@ -1,0 +1,131 @@
+body {
+  background: #303030;
+  color: white;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+html{
+  overflow: hidden;
+}
+
+.wavebar{
+	display: flex;
+	justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.AppContainer{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+}
+
+
+.App {
+
+padding: 50px 50px 20px 40px;
+position: absolute;
+bottom: 0;
+right: 0;
+font-family: sans-serif;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: black;
+width: 100%;
+;
+}
+
+button {
+  background: OrangeRed;
+  color: white;
+  border: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  outline: none;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background: #d63d05;
+}
+
+.playlist {
+  text-align: left;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.playlist-item {
+  color: #444;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  padding: 1em; 
+}
+
+.playlist-item.selected {
+  font-weight: bold;
+}
+
+.playlist-item:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.controls {
+
+  padding: 1em;
+  display: inline-block;
+}
+
+
+.playpause{
+   width: 8%;
+}
+
+.listbutton{
+  width: 3%;
+}
+
+.list{
+  position: relative;
+  height: 100vh;
+  background-color: black;
+  width: 5%;
+  animation: hoverpopout 0.5s;
+}
+
+.list:hover{
+  position: relative;
+  height: 100vh;
+  background-color: black;
+  width: 15%;
+  animation: hoverpopin 0.5s;
+}
+
+.playlistTitle{
+  overflow: hidden;
+  white-space: nowrap; /* Don't forget this one */
+  text-overflow: ellipsis;
+}
+
+
+@keyframes hoverpopin {
+  0% {
+    width: 5%;
+  }
+  100% {
+    width: 15%;
+  }
+}
+
+@keyframes hoverpopout {
+  0% {
+    width: 15%;
+  }
+  100% {
+    width: 5%;
+  }
+}
