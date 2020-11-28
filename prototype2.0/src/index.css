@@ -35,6 +35,7 @@ justify-content: center;
 align-items: center;
 background-color: black;
 width: 100%;
+flex-direction: column;
 ;
 }
 
@@ -95,6 +96,7 @@ button:hover {
   background-color: black;
   width: 5%;
   animation: hoverpopout 0.5s;
+  z-index: 100;
 }
 
 .list:hover{
@@ -111,6 +113,107 @@ button:hover {
   text-overflow: ellipsis;
 }
 
+
+.buttons{
+  display: inline-block;
+  width: 100%;
+}
+
+
+
+.loaderHome{
+  opacity: 1;
+  width: 40px;
+  position: absolute;
+  top: 54%;
+  left:50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); 
+}
+
+
+.upload{
+  width: 30px;
+  position: absolute;
+  top: 50%;
+  left:50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.uploadContainer{
+  padding: 20px;
+  width: 100%;
+  position: absolute;
+  top: 90%;
+  left:50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+ 
+
+.buttonUpload:hover{   
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+input[type="file"] {
+  display: none;
+}
+.custom-file-upload {
+
+  display: inline-block;
+  padding: 0.7em 1.7em; 
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.2em; 
+  width: 100%; 
+  box-sizing: border-box;
+  color: #FFFFFF;
+  background: rgb(103,14,162);
+  background: linear-gradient(90deg, rgba(103,14,162,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%); 
+  text-align: center;
+  border-width: 0px;
+  border: none;
+  margin-top: 10px; 
+  font-size: 18px;
+  font-weight: bold;
+  transition: 0.3s all; 
+  height: 50px;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.custom-file-upload:hover{    
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.buttonUpload{ 
+  display: inline-block;
+  padding: 0.7em 1.7em; 
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.2em; 
+  width: 60%; 
+  box-sizing: border-box;
+  color: #FFFFFF;
+  background: rgb(103,14,162);
+  background: linear-gradient(90deg, rgba(103,14,162,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%); 
+  text-align: center;
+  border-width: 0px;
+  border: none;
+  overflow: hidden;
+  margin-top: 0px; 
+  font-size: 18px;
+  font-weight: bold;
+  transition: 0.3s all; 
+  height: 50px;
+  position: relative;
+  font-style: italic;
+  margin-bottom: 30px;
+}
 
 @keyframes hoverpopin {
   0% {

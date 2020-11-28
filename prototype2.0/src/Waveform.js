@@ -16,6 +16,7 @@ const formWaveSurferOptions = ref => ({
   barRadius: 4,
   responsive: true,
   height: 55,
+  
 
   // If true, normalize by the maximum peak instead of 1.0.
   normalize: true,
@@ -24,9 +25,11 @@ const formWaveSurferOptions = ref => ({
 });
 
 export default function Waveform({ url }) {
+
+  // const [selectedBestand, setSelectedBestand] = useState([]);
   const waveformRef = useRef(null);
   const wavesurfer = useRef(null);
-  const [playing, setPlay] = useState(false);
+  const [playing, setPlay] = useState(false); 
   const [volume, setVolume] = useState(0.5);
 
   // create new WaveSurfer instance
@@ -37,7 +40,12 @@ export default function Waveform({ url }) {
     const options = formWaveSurferOptions(waveformRef.current);
     wavesurfer.current = WaveSurfer.create(options);
 
-    wavesurfer.current.load(url);
+
+
+    wavesurfer.current.load(url); 
+   
+   
+    // wavesurfer.current.load(url);  
 
     wavesurfer.current.on("ready", function() {
       // https://wavesurfer-js.org/docs/methods.html
@@ -94,7 +102,6 @@ export default function Waveform({ url }) {
           defaultValue={volume}
         />
         
-      
         </div>
         
     </div>
