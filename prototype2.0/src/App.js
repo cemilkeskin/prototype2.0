@@ -95,15 +95,19 @@ export default function App() {
     setLoadingSubmit(true);
     e.preventDefault()
     
-    await app.firestore().collection("allUploadsProto2").doc().set({
+    const ref = app.firestore().collection("allUploadsProto2").doc();
+    const id = ref.id;
+
+    await ref.set({
       title: fileName,
-      url: fileUrl,
+      url: fileUrl, 
+      doc: id
     }); 
     // setLoading(false); 
     console.log("done"); 
     setLoadingSubmit(false);
 
-  }  
+  }   
 
   
 var calcTempo = function (buffer) {
@@ -150,7 +154,8 @@ const tracks = [
   {
     id: 0,
     title: "test", 
-    url: "https://www.mfiles.co.uk/mp3-downloads/franz-schubert-standchen-serenade.mp3"
+    url: "https://www.mfiles.co.uk/mp3-downloads/franz-schubert-standchen-serenade.mp3",
+    doc: "sdg"
   }
 ];
 
@@ -207,8 +212,7 @@ console.log(bestanden);
     <PlayList
         tracks={bestanden} 
         selectedTrack={selectedTrack} 
-        setSelectedTrack={setSelectedTrack}
-        
+        setSelectedTrack={setSelectedTrack} 
       /> 
 
       <div className="uploadContainer">
@@ -275,12 +279,12 @@ return <div className="uploadContainer">
  
 
    <div className="App">
-   <div className="containerURL">
+   {/* <div className="containerURL">
     <a className="testURL" href={selectedTrack.url}>{selectedTrack.url}</a>
-    </div>
+    </div> */}
   
       <div className="wavebar">
-      <Waveform url={selectedTrack.url} />
+      <Waveform url={selectedTrack.url} doc={selectedTrack.doc} />
       </div>
       </div>
     </div>

@@ -15,7 +15,7 @@ const PlayList = ({ tracks, selectedTrack, setSelectedTrack }) => {
             console.log(track);}
          }
         >
-          <p className="playlistTitle">{track.url}</p>
+          <p className="playlistTitle">{track.title}</p>
         </div>
       ))}
     </div>

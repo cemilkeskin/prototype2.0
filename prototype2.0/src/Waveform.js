@@ -6,6 +6,7 @@ import list from './bullet-list.svg';
 
 
 import WaveSurfer from "wavesurfer.js";
+import app from "./base";
 
 const formWaveSurferOptions = ref => ({
   container: ref,
@@ -24,28 +25,37 @@ const formWaveSurferOptions = ref => ({
   partialRender: true
 });
 
-export default function Waveform({ url }) {
+export default function Waveform({ url, doc }) {
 
-  // const [selectedBestand, setSelectedBestand] = useState([]);
-  const waveformRef = useRef(null);
+  const [selectedBestand, setSelectedBestand] = useState([]);
+  const waveformRef = useRef(null); 
   const wavesurfer = useRef(null);
   const [playing, setPlay] = useState(false); 
   const [volume, setVolume] = useState(0.5);
+  let data;
 
   // create new WaveSurfer instance
   // On component mount and when url changes
   useEffect(() => {
     setPlay(false);
 
+    console.log(doc);
     const options = formWaveSurferOptions(waveformRef.current);
     wavesurfer.current = WaveSurfer.create(options);
 
+    app.firestore().collection("allUploadsProto2").doc(doc).get()
+    .then(function(res) {
+      data = res.data();
+      if(data){
+        console.log(data.url); 
+        wavesurfer.current.load(data.url);  
+      }
 
+    }); 
 
-    wavesurfer.current.load(url); 
-   
-   
-    // wavesurfer.current.load(url);  
+    // wavesurfer.current.load(doc)
+
+    wavesurfer.current.load(url);  
 
     wavesurfer.current.on("ready", function() {
       // https://wavesurfer-js.org/docs/methods.html
@@ -62,7 +72,7 @@ export default function Waveform({ url }) {
     // Removes events, elements and disconnects Web Audio nodes.
     // when component unmount
     return () => wavesurfer.current.destroy();
-  }, [url]);
+  }, [doc]);
 
   const handlePlayPause = () => {
     setPlay(!playing);
